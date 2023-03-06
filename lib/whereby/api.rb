@@ -38,6 +38,11 @@ module Whereby
       end
     end
 
+    # Returns the API key to use for the request.
+    def api_key
+      Whereby.api_key
+    end
+
     def body(options)
       Hash[options.map { |k, v| [k.to_s.whereby_lower_camelize, v] }].to_json
     end
@@ -45,7 +50,7 @@ module Whereby
     def headers
       {
           'Content-type' => 'application/json',
-          'Authorization' => "Bearer #{Whereby.api_key}"
+          'Authorization' => "Bearer #{api_key}"
       }
     end
 
