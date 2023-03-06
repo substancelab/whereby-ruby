@@ -8,6 +8,10 @@ module Whereby
     API_VERSION = 'v1'.freeze
     BASE_URL = "https://api.whereby.dev/#{API_VERSION}".freeze
 
+    def initialize(api_key: nil)
+      @api_key = api_key
+    end
+
     # GET /v1/meetings/:id
     def meeting(id)
       Meeting.new(whereby_request(:get, "meetings/#{id}"))
@@ -40,7 +44,7 @@ module Whereby
 
     # Returns the API key to use for the request.
     def api_key
-      Whereby.api_key
+      @api_key || Whereby.api_key
     end
 
     def body(options)
