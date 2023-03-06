@@ -37,6 +37,12 @@ By default, this gem try to read the `WHEREBY_API_KEY` environment variable and 
 api = Whereby::Api.new
 ```
 
+If you want to use a different API key then the default one configured as described above, you can pass an `api_key` argument to `new`:
+
+```ruby
+api = Whereby::Api.new(:api_key => "use_this_key")
+```
+
 ### API Requests
 
 ```ruby
